@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 script generates a .tgz archive from the contents of the web_static
 folder of your AirBnB Clone repo, using the function do_pack
@@ -17,6 +18,6 @@ def do_pack():
     local("mkdir -p versions")
     result = local(f"tar -czvf versions/{archive_file} web_static")
     # return file path if result was successful
-    if result:
+    if result is not None:
         return archive_file
     return None
