@@ -13,7 +13,7 @@ def do_pack():
 
     time_now = datetime.now()
     # format the file path with a .tgz extension
-    archive_file = f"web_static_{time_now.strftime('%Y%m%d%H%M%S').tgz}"
+    archive_file = f"web_static_{time_now.strftime('%Y%m%d%H%M%S')}.tgz"
     # create local directory
     local("mkdir -p versions")
     result = local(f"tar -czvf versions/{archive_file} web_static")
