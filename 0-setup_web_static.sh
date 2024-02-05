@@ -29,7 +29,8 @@ sudo ln -sf "/data/web_static/releases/test/" "/data/web_static/current"
 sudo chown -R ubuntu:ubuntu /data/
 
 # configure server to listen on port 80
-echo "server {
+sudo tee /etc/nginx/sites-available/default << EOF
+server {
         listen 80 default_server;
         listen [::]:80 default_server;
         server_name  _;
@@ -54,7 +55,8 @@ echo "server {
                 internal;
                 return 404 'Ceci n\'est pas une page\n';
         }
-}"  |  sudo tee /etc/nginx/sites-available/default
+}
+EOF
 
 # create a symbolic link 
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
