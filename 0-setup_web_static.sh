@@ -56,6 +56,9 @@ echo "server {
         }
 }"  |  sudo tee /etc/nginx/sites-available/default
 
+# create a symbolic link 
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
 # test server before restart
 sudo nginx -t
 
