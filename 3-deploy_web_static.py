@@ -24,7 +24,7 @@ def do_pack():
     result = local(f"tar -czvf versions/{archive_file} web_static")
     # return file path if result was successful
     if result is not None:
-        return archive_file
+        return f"versions/{archive_file}"
     return None
 
 
@@ -46,6 +46,7 @@ def do_deploy(archive_path):
         run(f"rm -rf {path}{no_extension}/web_static")
         run("rm -rf /data/web_static/current")
         run(f"ln -s {path}{no_extension}/ /data/web_static/current")
+        print("New version deployed!")
         return True
     except Exception as e:
         print(f"Error: {e}")
