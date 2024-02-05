@@ -19,8 +19,10 @@ def do_deploy(archive_path):
         file_name = archive_path.split("/")[-1]
         no_extension = file_name.split(".")[0]
         path = "/data/web_static/releases/"
+        # Upload the archive to the /tmp/
         put(archive_path, "/tmp/")
         run(f"mkdir -p {path}{no_extension}/")
+        # Uncompress the archive to designated folder
         run(f"tar -xzf /tmp/{file_name} -C {path}{no_extension}/")
         run(f"rm /tmp/{file_name}")
         run(f"mv {path}{no_extension}/web_static/* {path}{no_extension}/")
